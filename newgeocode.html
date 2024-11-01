@@ -1,0 +1,29 @@
+<!-- geolocation.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Get Current Location</title>
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+    function showPosition(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+
+      // Construct the Web App URL with the location parameters
+      var webAppUrl = "https://script.google.com/macros/s/AKfycbxm79WF-aBnbj069M2zpEBW70A6aCSeNDsjsLyy5skKPYWeFwYhN9cjp49hz7miwcbk/exec?latitude=" + latitude + "&longitude=" + longitude;
+
+      // Redirect to the Web App URL
+      window.location.href = webAppUrl;
+    }
+  </script>
+</head>
+<body onload="getLocation()">
+  <p>Capturing your location and submitting it, please wait...</p>
+</body>
+</html>
