@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Get Current Location</title>
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+    function showPosition(position) {
+      document.getElementById("location").value =
+        "Latitude: " + position.coords.latitude +
+        ", Longitude: " + position.coords.longitude;
+      var gmapurl = "https://www.google.com/maps/place/" + position.coords.latitude + "," + position.coords.longitude;
+      console.log(gmapurl);
+    }
+    
+    // Call getLocation automatically when the page loads
+    window.onload = function() {
+      getLocation();
+    };
+  </script>
+</head>
+<body>
+  <input type="text" id="location" placeholder="Your location will appear here" readonly>
+</body>
+</html>
